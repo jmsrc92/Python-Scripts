@@ -39,15 +39,15 @@ def account_info(account):
     account_country = account['country']
     account_followers = account['follower_count']
     string = (f"{account_name}, a {account_description},\
-    from {account_country}")
+ from {account_country}")
     return account_followers, string
 
 account_1_followers, account_1_details = account_info(first_account)
 
-print(account_1_details)
+print(f"Compare A: {account_1_details}")
 
 print(art.vs)
 
 account_2_followers, account_2_details = account_info(second_account)
 
-print(account_2_details)
+print(f"Against B: {account_2_details}")
