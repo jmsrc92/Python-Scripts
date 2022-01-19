@@ -11,7 +11,6 @@ while score >= 0:
         """generates a random_number number from 0 to between list range"""
         global data
         generated_number = random.randint(0, len(data)-1)
-        #print(generated_number)
         return generated_number
 
 
@@ -69,5 +68,5 @@ while score >= 0:
         print(f"\nYou guessed correct! Your score is {score}")
 
     else:
-        print(f"You lose your score was {score}")
-        break
+        print(f"\nYou lose your score was {score}")
+        score = -1
