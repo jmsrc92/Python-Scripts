@@ -2,7 +2,7 @@ import random
 import art
 from game_data import data
 
-#print(art.logo)
+print(art.logo)
 
 # PULL RANDOM KEY FROM LIST AND PRINT ITS VALUES STORE FOLLOWER COUNT
 #compar a: name, a desription, from account_country
@@ -38,9 +38,8 @@ def account_info(account):
     account_description = account['description']
     account_country = account['country']
     account_followers = account['follower_count']
-    string = print(f"""{account_name}, a {account_description},
-    from {account_country}""")
-    print(account)
+    string = (f"{account_name}, a {account_description},\
+    from {account_country}")
     return account_followers, string
 
 account_1_followers, account_1_details = account_info(first_account)
@@ -50,3 +49,5 @@ print(account_1_details)
 print(art.vs)
 
 account_2_followers, account_2_details = account_info(second_account)
+
+print(account_2_details)
