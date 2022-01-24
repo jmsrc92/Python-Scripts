@@ -53,7 +53,7 @@ num_dimes = int(input("How many dimes? "))
 num_nickles = int(input("How many nickles? "))
 num_pennies = int(input("How many pennies? "))
 
-total_user_money = cash_total()
+total_user_money = cash_total(num_quarters, num_dimes, num_nickles, num_pennies)
 
 
 def check_resources(chosen_drink):
@@ -68,9 +68,16 @@ def check_resources(chosen_drink):
 
 
 def check_transaction(user_money, chosen_drink, coffee_cash_total):
-    if user_money < chosen_drink:
+    drink_cost = MENU[chosen_drink]["cost"]
+    if user_money < drink_cost:
         print("Sorry that's not enough money. Money refunded.")
     else:
-        coffee_cash_total -= user_money
-        print(f"Here is {coffee_cash_total} dollars in change.”")
+        change = user_money - drink_cost
+        coffee_cash_total += drink_cost
+        print(f"Here is ${change} dollars in change.”")
     return coffee_cash_total
+
+
+check_resources(drink)
+
+coffee_machine_cash = check_transaction(total_user_money, drink, coffee_machine_cash)
