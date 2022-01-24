@@ -8,8 +8,6 @@ coffee_machine_cash = 0
 while coffee_machine_on:
 
 
-
-
     def cash_total(total_quarters=0, total_dimes=0, total_nickles=0, total_pennies=0):
         quarter_val = 0.25
         dime_val = 0.10
