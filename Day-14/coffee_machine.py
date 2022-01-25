@@ -8,7 +8,7 @@ coffee_machine_cash = 0
 def coffee_machine(cash_in_machine):
     global coffee_machine_on
 
-    while coffee_machine_on:
+    while coffee_machine_on == True:
 
 
         def cash_total(total_quarters=0, total_dimes=0, total_nickles=0, total_pennies=0):
@@ -35,14 +35,29 @@ def coffee_machine(cash_in_machine):
 
         drink = input("What would you like (espresso/latte/cappuccino): ")
 
+        def drink_in_menu(user_drink):
+            drink_list = []
+            for drink in MENU:
+                drink_list.append(drink)
+            if user_drink not in drink_list:
+                print("Drink isn't valid, try again")
+                return False
+            else: return True
+
+
+        drink_valid = drink_in_menu(drink)
+    
         if drink.lower() == "off":
             coffee_machine_on = False
-            return
-        elif drink == "report":
+            break
+        elif drink.lower() == "report":
             print_report()
             drink = input("What would you like (espresso/latte/cappuccino): ")
-
-
+        else: 
+            if drink_valid == False:
+                break        
+                 
+   
         def check_resources(chosen_drink):
             """Checks coffee ingredient values against machine level values returns nothing"""
             global coffee_machine_on
@@ -53,9 +68,10 @@ def coffee_machine(cash_in_machine):
                 if resource_ingredient_value < coffee_ingredient_value:
                     print(f"Sorry there is not enough {item}")
                     coffee_machine_on = False
-                    return
+                    return False
                 else:
                     resources[item] = resource_ingredient_value - coffee_ingredient_value #update dictionary value
+            print(f"Here is your {chosen_drink}. Enjoy!")
 
         print("Please insert coins.")
 
@@ -77,7 +93,7 @@ def coffee_machine(cash_in_machine):
                 print(f"Here is ${change} dollars in change.")
             return coffee_cash_total
 
-        check_resources(drink)
-        cash_in_machine = check_transaction(total_user_money, drink, cash_in_machine)
+    check_resources(drink)
+    cash_in_machine = check_transaction(total_user_money, drink, cash_in_machine)
 
 coffee_machine(coffee_machine_cash)        
